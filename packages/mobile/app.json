@@ -1,0 +1,20 @@
+{
+  "expo": {
+    "name": "오늘 뭐 보지",
+    "slug": "tv-ott-app",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": true,
+    "splash": {
+      "backgroundColor": "#0b0b0f"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.todaywatch.tvott"
+    },
+    "android": {
+      "package": "com.todaywatch.tvott"
+    }
+  }
+}

@@ -7,13 +7,14 @@
 ```
 tv-schedule-app/
 ├── packages/
-│   ├── shared/    # 공통 타입·상수 (웹 + 백엔드 + 추후 iOS 공유)
+│   ├── shared/    # 공통 타입·상수 (웹 + 백엔드 + 모바일 공유)
 │   ├── backend/   # Express API 서버
-│   └── web/       # React + Vite 웹앱
+│   ├── web/       # React + Vite 웹앱
+│   └── mobile/    # Expo / React Native 앱 (아이폰·안드로이드)
 ```
 
-- **shared** 에 `Channel`, `Program`, `OttContent`, `WatchProvider` 등 핵심 타입과 채널/OTT 상수를 정의하고, 백엔드와 프론트가 `@tv/shared` 로 가져다 씁니다.
-- 추후 React Native 앱을 추가할 때 `shared` 와 `backend` 를 그대로 재사용합니다.
+- **shared** 에 `Channel`, `Program`, `OttContent`, `WatchProvider` 등 핵심 타입과 채널/OTT 상수를 정의하고, 백엔드·웹·모바일이 `@tv/shared` 로 가져다 씁니다.
+- **mobile** 은 `@tv/shared` 와 백엔드를 그대로 재사용하고 화면만 React Native 로 구현합니다. 실행법은 [packages/mobile/RUN_MOBILE.md](packages/mobile/RUN_MOBILE.md), 배포는 [DEPLOY.md](DEPLOY.md) 참고.
 
 ## 기술 스택
 

@@ -6,7 +6,8 @@
   "workspaces": [
     "packages/shared",
     "packages/backend",
-    "packages/web"
+    "packages/web",
+    "packages/mobile"
   ],
   "scripts": {
     "build:shared": "npm run build -w @tv/shared",
