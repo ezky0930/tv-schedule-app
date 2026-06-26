@@ -17,10 +17,11 @@ export function createApp() {
   // 요청 로깅 (개발 중 어떤 요청이 들어오는지 확인용)
   app.use(morgan('dev'));
 
-  // CORS — 웹앱(다른 포트)에서의 호출 허용
+  // CORS — 웹앱(다른 포트/도메인)에서의 호출 허용.
+  // CORS_ORIGIN 에 '*' 가 있으면 모든 출처 허용(배포 초기 연결용), 아니면 지정 목록만.
   app.use(
     cors({
-      origin: config.corsOrigins,
+      origin: config.corsOrigins.includes('*') ? true : config.corsOrigins,
     }),
   );
 
