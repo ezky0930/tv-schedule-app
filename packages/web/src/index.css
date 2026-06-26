@@ -1,4 +1,4 @@
-/* Tailwind v4 — 단일 import 로 전체 유틸리티를 불러온다. (tailwind.config.js 불필요) */
+/* Tailwind v4 — 단일 import 로 전체 유틸리티 로드 */
 @import "tailwindcss";
 
 :root {
@@ -9,6 +9,32 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard",
     "Malgun Gothic", system-ui, sans-serif;
-  background-color: #0b0b0f;
-  color: #f4f4f5;
+  color: #e5e7eb;
+  background-color: #070b14;
+  /* 상단에 은은한 블루/퍼플 글로우 */
+  background-image:
+    radial-gradient(1100px 560px at 72% -12%, rgba(59, 130, 246, 0.14), transparent 60%),
+    radial-gradient(820px 460px at 8% -4%, rgba(99, 102, 241, 0.12), transparent 55%);
+  background-attachment: fixed;
+}
+
+/* 얇은 스크롤바 (가로 타임라인 등) */
+.thin-scroll::-webkit-scrollbar {
+  height: 9px;
+  width: 9px;
+}
+.thin-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+}
+.thin-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 카드 hover 살짝 떠오르는 효과용 유틸 */
+.card-hover {
+  transition: transform 0.18s ease, border-color 0.18s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
 }
