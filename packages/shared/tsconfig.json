@@ -1,0 +1,11 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    // shared 는 순수 데이터/타입만 다룬다. DOM·Node 전용 타입에 의존하지 않아야
+    // 웹·백엔드·React Native 어디서든 안전하게 import 할 수 있다.
+    "lib": ["ES2022"]
+  },
+  "include": ["src/**/*.ts"]
+}

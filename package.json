@@ -1,0 +1,26 @@
+{
+  "name": "tv-schedule-app",
+  "version": "0.1.0",
+  "private": true,
+  "description": "대한민국 TV 편성표 + OTT 콘텐츠 통합 웹앱 (추후 React Native 확장 대비 모노레포)",
+  "workspaces": [
+    "packages/shared",
+    "packages/backend",
+    "packages/web"
+  ],
+  "scripts": {
+    "build:shared": "npm run build -w @tv/shared",
+    "dev:backend": "npm run dev -w @tv/backend",
+    "dev:web": "npm run dev -w @tv/web",
+    "dev": "concurrently -n shared,backend,web -c cyan,green,magenta \"npm:watch:shared\" \"npm:dev:backend\" \"npm:dev:web\"",
+    "watch:shared": "npm run watch -w @tv/shared",
+    "build": "npm run build -w @tv/shared && npm run build -w @tv/backend && npm run build -w @tv/web",
+    "clean": "rm -rf packages/*/dist packages/*/node_modules node_modules"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
