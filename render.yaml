@@ -7,7 +7,8 @@ services:
     runtime: node
     plan: free # 무료 플랜 (일정 시간 미사용 시 잠들었다가 첫 요청에 깨어남)
     region: singapore # 한국에서 가까운 지역
-    buildCommand: npm install && npm run build:shared && npm run build -w @tv/backend
+    # --include=dev: NODE_ENV=production 이어도 빌드용 devDependency(typescript) 설치 보장
+    buildCommand: npm install --include=dev && npm run build:shared && npm run build -w @tv/backend
     startCommand: node packages/backend/dist/index.js
     healthCheckPath: /api/health
     envVars:
