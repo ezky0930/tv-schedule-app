@@ -9,9 +9,11 @@ import {
   type OttContent,
 } from '@tv/shared';
 import { api, type MetaInfo } from '../lib/api.js';
+import { useIsMobile } from '../lib/useIsMobile.js';
 import HeroCarousel from './HeroCarousel.js';
 import ScheduleControls from './ScheduleControls.js';
 import EpgTimelineGrid from './EpgTimelineGrid.js';
+import MobileSchedule from './MobileSchedule.js';
 import RecommendedRow from './RecommendedRow.js';
 import ContentDetailModal from './ContentDetailModal.js';
 import FavoriteButton from './FavoriteButton.js';
@@ -21,6 +23,7 @@ type CategoryFilter = 'all' | ChannelCategory;
 type SortMode = 'time' | 'popular';
 
 export default function TvSchedulePage() {
+  const isMobile = useIsMobile();
   const todayDay = useMemo(() => dayOfWeekFromDate(new Date()), []);
   const [day, setDay] = useState<DayOfWeek>(todayDay);
   const [sort, setSort] = useState<SortMode>('time');
@@ -117,6 +120,13 @@ export default function TvSchedulePage() {
         </div>
       ) : sort === 'popular' ? (
         <PopularList list={rankedList} channelName={channelName} />
+      ) : isMobile ? (
+        <MobileSchedule
+          channels={visibleChannels}
+          programs={gridPrograms}
+          selectedDay={day}
+          todayDay={todayDay}
+        />
       ) : (
         <EpgTimelineGrid
           channels={visibleChannels}
