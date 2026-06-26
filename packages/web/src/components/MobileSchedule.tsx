@@ -61,9 +61,12 @@ export default function MobileSchedule({ channels, programs, selectedDay, todayD
     isToday && p.startTime <= now && (!p.endTime || now < p.endTime);
 
   return (
-    <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
-      {/* 채널 선택 칩 (가로 스크롤, 상단 고정) */}
-      <div className="thin-scroll flex gap-2 overflow-x-auto border-b border-white/10 bg-white/[0.02] p-3">
+    <div className="space-y-3">
+      {/* 채널 선택 칩 — 스크롤해도 헤더 바로 아래에 고정(sticky) */}
+      <div
+        style={{ top: 'var(--app-header-h, 0px)' }}
+        className="thin-scroll sticky z-30 flex gap-2 overflow-x-auto rounded-xl border border-white/10 bg-[#0a0e17]/95 p-2.5 shadow-lg shadow-black/30 backdrop-blur"
+      >
         {channels.map((c) => {
           const on = c.id === channelId;
           return (
@@ -82,6 +85,7 @@ export default function MobileSchedule({ channels, programs, selectedDay, todayD
       </div>
 
       {/* 선택 채널 하루 편성 (세로 타임라인) */}
+      <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03]">
       {list.length === 0 ? (
         <p className="py-12 text-center text-sm text-slate-500">
           {selectedChannel ? '편성 정보가 없습니다.' : '채널을 선택하세요.'}
@@ -177,6 +181,7 @@ export default function MobileSchedule({ channels, programs, selectedDay, todayD
           })}
         </ul>
       )}
+      </div>
     </div>
   );
 }
